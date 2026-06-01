@@ -1,0 +1,1465 @@
+/* ==========================================================================
+   HE THONG CSS VARIABLES & THIET LAP CHUNG
+   ========================================================================== */
+:root {
+    --bg-cream: #FAF7F2;
+    --bg-paper: #fcfbfa;
+    --navy-primary: #1D3557;
+    --navy-hover: #11223b;
+    --navy-light: #2E4C7E;
+    --pink-wax: #E8A0A7;
+    --pink-wax-hover: #e48c95;
+    --pink-wax-shadow: #c87c84;
+    --gold-accent: #D4AF37;
+
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --envelope-shadow: 0 15px 45px rgba(29, 53, 87, 0.15);
+
+    --font-cursive: 'Great Vibes', cursive;
+    --font-title: 'Playfair Display', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-cream);
+    color: var(--navy-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Hiệu ứng hạt giấy nhẹ dịu */
+    background-image:
+        radial-gradient(var(--navy-light) 0.5px, transparent 0.5px),
+        radial-gradient(var(--navy-light) 0.5px, var(--bg-cream) 0.5px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    background-blend-mode: multiply;
+    opacity: 0.98;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-cream);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--navy-light);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--navy-primary);
+}
+
+/* ==========================================================================
+   DECORATIVE ELEMENTS (DOODLES) & ANIMATIONS
+   ========================================================================== */
+.decorations-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Base style for hand-drawn doodles */
+.doodle {
+    position: absolute;
+    color: var(--navy-light);
+    opacity: 0.18;
+    filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.05));
+    animation: float-slow 8s ease-in-out infinite alternate;
+}
+
+/* Bow (Ruy băng) position */
+.doodle-bow-1 {
+    width: 70px;
+    top: 15%;
+    left: 8%;
+    animation-delay: 0s;
+}
+
+.doodle-bow-2 {
+    width: 55px;
+    bottom: 30%;
+    right: 8%;
+    animation-delay: 2s;
+    transform: rotate(15deg);
+}
+
+/* Sparkle & Stars */
+.doodle-sparkle-1 {
+    width: 40px;
+    top: 8%;
+    right: 12%;
+    animation: float-slow 6s ease-in-out infinite alternate-reverse;
+}
+
+.doodle-sparkle-2 {
+    width: 30px;
+    bottom: 45%;
+    left: 6%;
+    animation-delay: 1.5s;
+}
+
+.doodle-star-1 {
+    width: 35px;
+    top: 35%;
+    right: 5%;
+    animation-delay: 3s;
+}
+
+.doodle-star-2 {
+    width: 25px;
+    bottom: 12%;
+    left: 15%;
+    animation: float-slow 9s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes float-slow {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-15px) rotate(8deg);
+    }
+}
+
+/* Music controller styles removed */
+
+/* ==========================================================================
+   LAYOUT STRUCTURE (MAIN WRAPPER & HEADER)
+   ========================================================================== */
+.main-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    padding: 80px 20px 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 2;
+}
+
+.header-banner {
+    text-align: center;
+    margin-bottom: 40px;
+    z-index: 10;
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Ẩn tiêu đề chính khi thiệp mở ra để tránh chồng lấn */
+body.opened .header-banner {
+    opacity: 0;
+    transform: translateY(-40px);
+    pointer-events: none;
+}
+
+.calligraphy-title {
+    font-family: var(--font-cursive);
+    font-size: 4.8rem;
+    font-weight: 400;
+    color: var(--navy-primary);
+    line-height: 1.1;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+    margin-bottom: 5px;
+    animation: fade-in-down 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.school-subtitle {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy-light);
+    opacity: 0.9;
+    margin-top: 5px;
+    animation: fade-in 1.5s ease-out;
+}
+
+@keyframes fade-in-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.9;
+    }
+}
+
+/* ==========================================================================
+   3D ENVELOPE DESIGN & INTERACTION
+   ========================================================================== */
+.envelope-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 140px; /* Cung cấp khoảng trống tĩnh phía trên cho thiệp trồi lên */
+    perspective: 1500px;
+    transition: margin-top 0.8s cubic-bezier(0.25, 1, 0.5, 1), margin-bottom 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+body.opened .envelope-container {
+    margin-top: 260px;
+    margin-bottom: 180px;
+}
+
+.envelope-wrapper {
+    width: 640px;
+    height: 420px;
+    position: relative;
+    transition: transform 0.5s ease;
+}
+
+.envelope {
+    width: 100%;
+    height: 100%;
+    background-color: var(--navy-primary);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 6px;
+    box-shadow: var(--envelope-shadow);
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+/* 1. Inside Liner (Mặt trong phong bì có hoa cúc vẽ tay) */
+.envelope-inside {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #172a44;
+    /* Màu navy tối bên trong */
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.liner-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    /* Tạo hoạ tiết hoa cúc dại vẽ tay bằng CSS Gradient / Pattern */
+    background-image:
+        radial-gradient(circle at 50% 50%, #fff 2px, transparent 3px),
+        radial-gradient(circle at 20% 30%, #fff 1.5px, transparent 2.5px),
+        radial-gradient(circle at 80% 40%, #fff 2px, transparent 3px),
+        radial-gradient(circle at 35% 75%, #fff 1.5px, transparent 2.5px),
+        radial-gradient(circle at 70% 80%, #fff 2px, transparent 3px);
+    background-size: 100px 100px;
+}
+
+/* 2. Cánh gập phong bì (Mặt trước) */
+.envelope-left,
+.envelope-right,
+.envelope-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.envelope-left {
+    left: 0;
+    background-color: #233e66;
+    clip-path: polygon(0 0, 52% 50%, 0 100%);
+    border-radius: 6px 0 0 6px;
+    filter: drop-shadow(2px 0 5px rgba(0, 0, 0, 0.1));
+}
+
+.envelope-right {
+    right: 0;
+    background-color: #284775;
+    clip-path: polygon(100% 0, 48% 50%, 100% 100%);
+    border-radius: 0 6px 6px 0;
+    filter: drop-shadow(-2px 0 5px rgba(0, 0, 0, 0.1));
+}
+
+.envelope-bottom {
+    background-color: #1d3557;
+    clip-path: polygon(0 100%, 50% 45%, 100% 100%);
+    border-radius: 0 0 6px 6px;
+    filter: drop-shadow(0 -3px 5px rgba(0, 0, 0, 0.12));
+}
+
+/* 3. Nắp đậy phía trên (Top Flap - Xoay 3D) */
+.envelope-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: top;
+    z-index: 10;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.4s ease;
+    transform-style: preserve-3d;
+    pointer-events: none;
+}
+
+.envelope-top-inner {
+    width: 100%;
+    height: 100%;
+    background-color: #2b4b7c;
+    clip-path: polygon(0 0, 50% 55%, 100% 0);
+    border-radius: 6px 6px 0 0;
+    filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.15));
+}
+
+/* Khi phong bì được MỞ */
+.opened .envelope-top {
+    transform: rotateX(180deg);
+    z-index: 2;
+    /* Đẩy xuống dưới để thiệp trượt lên trên */
+}
+
+/* 4. Con dấu sáp (Wax Seal Button) */
+.wax-seal {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 80px;
+    height: 80px;
+    z-index: 12;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+}
+
+.wax-seal-body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--pink-wax);
+    border-radius: 50%;
+    box-shadow:
+        inset 0 4px 6px rgba(255, 255, 255, 0.4),
+        0 6px 15px var(--pink-wax-shadow),
+        0 0 0 4px rgba(232, 160, 167, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 3px double rgba(255, 255, 255, 0.25);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Icon nơ ruy băng ở giữa con dấu */
+.wax-bow-svg {
+    width: 42px;
+    height: 42px;
+    filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.15));
+}
+
+.wax-seal-hint {
+    position: absolute;
+    top: 95px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--navy-primary);
+    color: var(--bg-cream);
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    opacity: 0.9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: seal-pulse 2s infinite;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.wax-glow-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--pink-wax);
+    opacity: 0;
+    pointer-events: none;
+    animation: ring-glow 2s infinite;
+}
+
+@keyframes ring-glow {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes seal-pulse {
+
+    0%,
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.05);
+    }
+}
+
+.wax-seal:hover {
+    transform: translate(-50%, -15%) scale(1.1);
+}
+
+.wax-seal:hover .wax-seal-body {
+    background-color: var(--pink-wax-hover);
+    box-shadow:
+        inset 0 4px 6px rgba(255, 255, 255, 0.4),
+        0 8px 20px var(--pink-wax-shadow),
+        0 0 0 6px rgba(232, 160, 167, 0.3);
+}
+
+/* Ẩn dấu sáp khi đã mở phong bì */
+.opened .wax-seal {
+    opacity: 0;
+    transform: translate(-50%, 20%) scale(0.7);
+    pointer-events: none;
+}
+
+.opened .wax-seal-hint {
+    opacity: 0;
+}
+
+/* Thông tin bìa ngoài phong bì (Bên dưới phong bì) */
+.envelope-footer-info {
+    text-align: center;
+    margin-top: 25px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.footer-name {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--navy-primary);
+    margin-bottom: 2px;
+}
+
+.footer-sub {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--navy-light);
+}
+
+.footer-year {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--navy-light);
+    margin-top: 3px;
+    opacity: 0.8;
+}
+
+body.opened .envelope-footer-info {
+    opacity: 0;
+    transform: translateY(40px);
+    pointer-events: none;
+}
+
+
+/* ==========================================================================
+   YEARBOOK INVITATION CARD (THIỆP MỜI BÊN TRONG)
+   ========================================================================== */
+.card-invitation {
+    position: absolute;
+    width: 92%;
+    height: 94%;
+    left: 4%;
+    top: 3%;
+    background-color: var(--bg-paper);
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+    transform: translateY(0);
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), height 1.2s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.5s ease, box-shadow 0.8s ease;
+    overflow: hidden;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Wavy Border bằng SVG vẽ tay nét đứt dễ thương bao quanh thiệp */
+.card-wavy-border {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1.5px dashed rgba(29, 53, 87, 0.25);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+/* Khi thiệp trượt ra khỏi phong bì */
+.opened .card-invitation {
+    transform: translateY(-40%) translateZ(10px);
+    /* Trượt lên vừa vặn đậu ngay miệng túi phong bì */
+    z-index: 15;
+    /* Nổi lên trên cánh gập để hiển thị đầy đủ chữ và các nút bấm */
+    box-shadow: 0 20px 50px rgba(29, 53, 87, 0.18);
+    height: 620px;
+    /* Chiều cao cân đối hoàn hảo để không bị tràn */
+    overflow: visible;
+    /* Cho phép tràn nội dung để xem chi tiết */
+}
+
+/* Bố cục lưới của Thiệp mời */
+.card-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 25px;
+    height: 100%;
+}
+
+/* --- Cột bên Trái: Chân dung chính & Tiêu đề --- */
+.card-column-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-header {
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+.ribbon-icon {
+    font-size: 1.8rem;
+    display: inline-block;
+    animation: ribbon-sway 3s ease-in-out infinite alternate;
+}
+
+@keyframes ribbon-sway {
+    0% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(10deg);
+    }
+}
+
+.card-mini-title {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--navy-light);
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+.card-graduate-name {
+    font-family: var(--font-cursive);
+    font-size: 2.6rem;
+    font-weight: 400;
+    color: var(--navy-primary);
+    line-height: 1.1;
+    margin: 4px 0;
+}
+
+.card-tagline {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-style: italic;
+    color: var(--navy-light);
+    opacity: 0.8;
+}
+
+/* Khung ảnh chân dung lượn sóng cổ điển (Scalloped Frame) */
+.portrait-container {
+    position: relative;
+    width: 170px;
+    height: 220px;
+    margin: 8px 0;
+    align-self: center;
+}
+
+.portrait-scallop {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-cream);
+    padding: 6px;
+    border: 2px solid var(--navy-primary);
+    box-shadow: 5px 5px 0px rgba(29, 53, 87, 0.1);
+    /* Tạo viền lượn sóng (scallop) cổ điển bằng border-radius đặc biệt */
+    border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+    animation: morph-frame 8s ease-in-out infinite alternate;
+    transition: transform 0.3s ease;
+}
+
+.portrait-scallop:hover {
+    transform: scale(1.03) rotate(-2deg);
+}
+
+.portrait-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    /* Giữ hình ảnh sắc nét, tránh bị mờ khi render 3D */
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+}
+
+@keyframes morph-frame {
+    0% {
+        border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+    }
+
+    100% {
+        border-radius: 45% 55% 45% 55% / 55% 45% 55% 45%;
+    }
+}
+
+.portrait-doodle-sparkle {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1.4rem;
+    color: var(--pink-wax);
+    animation: sparkle-blink 1.5s infinite alternate;
+}
+
+@keyframes sparkle-blink {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Thông tin chi tiết hiển thị ở cả Desktop và Mobile */
+.quick-details {
+    margin-top: 15px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.detail-icon {
+    font-size: 1.1rem;
+    background: rgba(29, 53, 87, 0.05);
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-item strong {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--navy-primary);
+    text-transform: uppercase;
+}
+
+.detail-item p {
+    font-size: 0.8rem;
+    color: var(--navy-light);
+    margin-top: 2px;
+    line-height: 1.4;
+}
+
+/* --- Cột bên Phải: Dải ảnh phim & Nút hành động --- */
+.card-column-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Dải ảnh phim (Photostrip) cổ điển */
+.photostrip-wrapper {
+    background-color: var(--bg-paper);
+    padding: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(29, 53, 87, 0.08);
+    transform: rotate(2deg);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    max-width: 130px;
+    margin: 0 auto;
+}
+
+.photostrip-wrapper:hover {
+    transform: rotate(-1deg) scale(1.05);
+    z-index: 10;
+}
+
+.photostrip {
+    background-color: #172a44;
+    /* Dải phim màu tối */
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.strip-photo-item {
+    width: 100%;
+    height: 75px;
+    overflow: hidden;
+    background: #000;
+}
+
+.strip-photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    /* Giữ hình ảnh sắc nét, tránh bị mờ khi render 3D */
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+}
+
+.strip-photo-item:hover img {
+    transform: scale(1.08);
+    opacity: 1;
+}
+
+/* Sticker dán đè lên dải phim */
+.strip-sticker {
+    position: absolute;
+    font-size: 1.1rem;
+    filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.15));
+    pointer-events: none;
+    animation: float-slow 4s ease-in-out infinite alternate;
+}
+
+.sticker-heart {
+    bottom: -10px;
+    left: -10px;
+    transform: rotate(-15deg);
+}
+
+.sticker-star {
+    top: -8px;
+    right: -5px;
+    transform: rotate(10deg);
+    animation-delay: 1s;
+}
+
+.sticker-sparkle {
+    top: 45%;
+    left: -12px;
+    animation-delay: 2s;
+}
+
+/* Nút hành động */
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.btn {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--navy-primary);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(29, 53, 87, 0.15);
+}
+
+.btn-primary:hover {
+    background-color: var(--navy-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(29, 53, 87, 0.25);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--navy-primary);
+    border: 1.5px solid var(--navy-primary);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(29, 53, 87, 0.05);
+    transform: translateY(-2px);
+}
+
+.btn-tertiary {
+    background-color: transparent;
+    color: var(--pink-wax-shadow);
+    border: 1.5px solid var(--pink-wax);
+}
+
+.btn-tertiary:hover {
+    background-color: rgba(232, 160, 167, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* Quick Details chỉ hiển thị trên Điện thoại */
+.quick-details-mobile {
+    display: none;
+}
+
+
+/* ==========================================================================
+   STUCKY GUESTBOOK SECTION (LƯU BÚT ĐÁNG YÊU)
+   ========================================================================== */
+.guestbook-section {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 40px;
+    /* Tạo khoảng trống lớn để thiệp trượt lên không đè */
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(29, 53, 87, 0.08);
+    border-radius: 12px;
+    padding: 40px 30px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    transform: translateY(40px);
+    pointer-events: none;
+    /* Chỉ hiện sau khi mở thiệp */
+}
+
+body.opened .guestbook-section {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.section-title {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--navy-primary);
+    margin-bottom: 8px;
+}
+
+.section-desc {
+    font-size: 0.85rem;
+    color: var(--navy-light);
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+/* Bảng dán các sticky notes */
+.sticky-notes-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    perspective: 1000px;
+}
+
+/* Thẻ ghi chú màu mè dễ thương */
+.sticky-note {
+    width: 100%;
+    max-width: 220px;
+    min-height: 180px;
+    padding: 20px;
+    font-family: var(--font-body);
+    box-shadow: 3px 6px 12px rgba(0, 0, 0, 0.06);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 2px 2px 2px 20px / 2px 2px 20px 2px;
+    border-top: 15px solid rgba(0, 0, 0, 0.03);
+    /* Viền giả băng dính */
+}
+
+.sticky-note::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    width: 15px;
+    height: 15px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.15);
+    transform: rotate(5deg);
+}
+
+.sticky-note:hover {
+    transform: scale(1.05) rotate(0deg) !important;
+    box-shadow: 5px 12px 20px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.note-text {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #333;
+    font-style: italic;
+}
+
+.note-author {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--navy-primary);
+    text-align: right;
+    margin-top: 10px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    padding-top: 6px;
+    display: block;
+}
+
+/* Palette màu cho Sticky Notes */
+.note-color-1 {
+    background-color: #FFF2CC;
+    border-left: 4px solid #F1C40F;
+}
+
+/* Vàng sữa */
+.note-color-2 {
+    background-color: #E8F8F5;
+    border-left: 4px solid #1ABC9C;
+}
+
+/* Xanh bạc hà */
+.note-color-3 {
+    background-color: #FADBD8;
+    border-left: 4px solid #E74C3C;
+}
+
+/* Hồng pastel */
+.note-color-4 {
+    background-color: #EBF5FB;
+    border-left: 4px solid #3498DB;
+}
+
+/* Xanh dương nhạt */
+
+/* Góc quay ngẫu nhiên cho nhãn dán */
+.rotate-left {
+    transform: rotate(-3deg);
+}
+
+.rotate-right {
+    transform: rotate(3deg);
+}
+
+
+/* ==========================================================================
+   MODAL POPUP STYLING (GLASSMORPHISM CONTENT)
+   ========================================================================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(29, 53, 87, 0.5);
+    backdrop-filter: blur(5px);
+    transition: opacity 0.4s ease;
+}
+
+.modal-content {
+    background-color: var(--bg-paper);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    padding: 35px 30px;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: scale(0.8) translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: var(--navy-primary);
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.modal-close:hover {
+    opacity: 1;
+}
+
+.modal-header-accent {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 5px;
+    animation: ribbon-sway 2s ease-in-out infinite alternate;
+}
+
+.modal-title {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--navy-primary);
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.modal-desc {
+    font-size: 0.78rem;
+    color: var(--navy-light);
+    opacity: 0.8;
+    text-align: center;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+/* Form inputs styling */
+.form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--navy-primary);
+    margin-bottom: 6px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(29, 53, 87, 0.18);
+    background-color: var(--bg-cream);
+    color: var(--navy-primary);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--navy-primary);
+    box-shadow: 0 0 0 3px rgba(29, 53, 87, 0.08);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 15px;
+}
+
+/* Palette màu trong form viết lưu bút */
+.color-picker {
+    display: flex;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.color-option {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.color-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.color-option .checkmark {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid transparent;
+}
+
+.color-option input:checked~.checkmark {
+    border-color: var(--navy-primary);
+    box-shadow: inset 0 0 0 2px #fff;
+}
+
+.note-color-1-preview .checkmark {
+    background-color: #FFF2CC;
+}
+
+.note-color-2-preview .checkmark {
+    background-color: #E8F8F5;
+}
+
+.note-color-3-preview .checkmark {
+    background-color: #FADBD8;
+}
+
+.note-color-4-preview .checkmark {
+    background-color: #EBF5FB;
+}
+
+
+/* ==========================================================================
+   CONFETTI EXPLOSION CANVAS
+   ========================================================================== */
+.confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 150;
+    display: none;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE-FIRST BREAKPOINTS)
+   ========================================================================== */
+
+/* 1. Màn hình tablet (Dưới 768px) */
+@media (max-width: 768px) {
+    .main-wrapper {
+        padding: 40px 15px 60px 15px;
+    }
+    
+    .envelope-container {
+        margin-top: 80px;
+    }
+
+    body.opened .envelope-container {
+        margin-top: 200px;
+        margin-bottom: 280px;
+    }
+
+    .envelope-wrapper {
+        width: 100%;
+        max-width: 460px;
+        height: 320px;
+    }
+
+    .wax-seal {
+        width: 70px;
+        height: 70px;
+    }
+
+    .wax-seal-hint {
+        top: 85px;
+        font-size: 0.6rem;
+    }
+
+    .calligraphy-title {
+        font-size: 3.6rem;
+    }
+
+    .opened .card-invitation {
+        height: auto;
+        transform: translateY(-160px) translateZ(10px);
+        padding-bottom: 20px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card-inner {
+        padding: 20px;
+    }
+
+    .portrait-container {
+        width: 160px;
+        height: 200px;
+        align-self: center;
+    }
+
+    .card-graduate-name {
+        font-size: 2.6rem;
+        text-align: center;
+    }
+
+    .card-header {
+        text-align: center;
+    }
+
+    .quick-details {
+        display: block;
+        border-top: 1px dashed rgba(29, 53, 87, 0.15);
+        padding-top: 15px;
+        margin-top: 15px;
+    }
+
+    .photostrip-wrapper {
+        max-width: 100%;
+        width: 100%;
+        transform: rotate(1deg);
+        margin: 15px auto;
+        padding: 6px;
+    }
+    
+    .photostrip-wrapper:hover {
+        transform: scale(1.02);
+    }
+
+    .photostrip {
+        flex-direction: row;
+        justify-content: center;
+        gap: 6px;
+        padding: 4px;
+    }
+
+    .strip-photo-item {
+        flex: 1;
+        max-width: 80px;
+        height: 70px;
+    }
+    
+    .strip-sticker {
+        display: none;
+    }
+
+    .guestbook-section {
+        margin-top: 40px;
+        padding: 25px 15px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* 2. Màn hình điện thoại nhỏ (Dưới 480px) */
+@media (max-width: 480px) {
+    .main-wrapper {
+        padding: 30px 10px 40px 10px;
+    }
+
+    .envelope-container {
+        margin-top: 50px;
+    }
+
+    body.opened .envelope-container {
+        margin-top: 160px;
+        margin-bottom: 340px;
+    }
+
+    .envelope-wrapper {
+        max-width: 340px;
+        height: 250px;
+    }
+
+    .envelope-left {
+        clip-path: polygon(0 0, 53% 50%, 0 100%);
+    }
+
+    .envelope-right {
+        clip-path: polygon(100% 0, 47% 50%, 100% 100%);
+    }
+
+    .envelope-bottom {
+        clip-path: polygon(0 100%, 50% 48%, 100% 100%);
+    }
+
+    .envelope-top-inner {
+        clip-path: polygon(0 0, 50% 58%, 100% 0);
+    }
+
+    .wax-seal {
+        width: 60px;
+        height: 60px;
+        top: 38%;
+    }
+
+    .wax-bow-svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .calligraphy-title {
+        font-size: 2.8rem;
+    }
+
+    .opened .card-invitation {
+        transform: translateY(-130px) translateZ(10px);
+        width: 94%;
+        left: 3%;
+    }
+
+    .portrait-container {
+        width: 140px;
+        height: 185px;
+    }
+
+    .card-graduate-name {
+        font-size: 2.2rem;
+    }
+
+    .photostrip-wrapper {
+        max-width: 100%;
+        width: 100%;
+        padding: 4px;
+        margin: 10px auto;
+    }
+
+    .photostrip {
+        gap: 4px;
+        padding: 2px;
+    }
+
+    .strip-photo-item {
+        height: 60px;
+        max-width: 70px;
+    }
+
+    .guestbook-section {
+        margin-top: 30px;
+    }
+
+    .sticky-notes-board {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        padding: 25px 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
